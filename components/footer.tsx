@@ -83,7 +83,7 @@ export function Footer() {
         <div className="relative h-10 w-32 shrink-0 flex items-center">
           {/* Default logo */}
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9OzSKdyXEiZBbZuOGibUc5cSvONvjl.png"
+            src="/mdalogo.png"
             alt="Espacios MDA"
             className={`h-full w-auto object-contain absolute inset-0 transition-opacity duration-300 ${hovered ? "opacity-0" : "opacity-100"}`}
           />
@@ -118,7 +118,7 @@ export function Footer() {
 
         {/* Contacto pill — hover triggers the logo swap */}
         <a
-          href="https://wa.me/5492214816465?text=Hola%20Espacios%20MDA.%20Me%20interesa%20consultar%20sobre"
+          href="https://wa.me/542257548387?text=Hola%20Espacios%20MDA.%20Me%20interesa%20consultar%20sobre"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           className="text-xs font-medium px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors font-sans"

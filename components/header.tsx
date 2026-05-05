@@ -9,7 +9,7 @@ export function Header() {
         {/* Real logo */}
         <a href="/" aria-label="Espacios MDA — inicio">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9OzSKdyXEiZBbZuOGibUc5cSvONvjl.png"
+            src="/mdalogo.png"
             alt="Espacios MDA"
             className="h-12 w-auto"
           />
@@ -25,7 +25,7 @@ export function Header() {
             ( nosotros )
           </a>
           <a
-            href="https://wa.me/5492214816465?text=Hola%20Espacios%20MDA.%20Me%20interesa%20consultar%20sobre"
+            href="https://wa.me/542257548387?text=Hola%20Espacios%20MDA.%20Me%20interesa%20consultar%20sobre"
             className="text-xs font-medium px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground tracking-wide hover:bg-primary hover:text-primary-foreground transition-colors font-sans"
           >
             ( contacto )

@@ -131,10 +131,10 @@ export function Nosotros() {
           {/* logo watermark centered */}
           <div className="absolute inset-0 flex items-center justify-center">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9OzSKdyXEiZBbZuOGibUc5cSvONvjl.png"
+              src="/NosotrosMDA.png"
               alt=""
               aria-hidden="true"
-              className="w-40 md:w-52 object-contain opacity-10 select-none pointer-events-none"
+
             />
           </div>
         </div>

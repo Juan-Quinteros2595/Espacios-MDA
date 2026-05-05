@@ -1,84 +1,149 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ColorOption {
   name: string
-  hex: string
+  image: string
+  imageColor: string
 }
 
 interface ProductCardProps {
-  number: string
   category: string
-  material: string
   colors: ColorOption[]
 }
 
-export function ProductCard({ number, category, material, colors }: ProductCardProps) {
+const PHONE = "542257548387" // reemplazar con numero 
+
+export function ProductCard({ category, colors }: ProductCardProps) {
   const [activeColor, setActiveColor] = useState(0)
+
+  const prev = () => setActiveColor((i) => (i === 0 ? colors.length - 1 : i - 1))
+  const next = () => setActiveColor((i) => (i === colors.length - 1 ? 0 : i + 1))
+
+  const whatsappUrl = () => {
+    const msg = `Hola, me interesa la ${category} de color ${colors[activeColor].name}. Está disponible todavía?`
+    return `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`
+  }
 
   return (
     <article className="bg-card border border-border flex flex-col">
-      {/* Top label */}
-      <div className="px-5 pt-5 pb-3">
-        <p className="text-xs font-medium tracking-[0.15em] text-muted-foreground uppercase font-sans">
-          // {category}
-        </p>
+
+      {/* Top row: category + CTA */}
+      <div className="flex items-center justify-between px-5 pt-5 pb-4">
+        <h3 className="text-sm font-bold text-card-foreground font-sans tracking-tight">
+          {category}
+        </h3>
+        <a
+          href={whatsappUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[11px] font-medium font-sans px-4 py-1.5 rounded-full border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors tracking-wide whitespace-nowrap"
+        >
+          Me interesa
+        </a>
       </div>
 
-      {/* Swatch */}
-      <div
-        className="mx-5 flex-1 min-h-[220px] md:min-h-[260px] transition-colors duration-300"
-        style={{ backgroundColor: colors[activeColor].hex }}
-        aria-label={`Color seleccionado: ${colors[activeColor].name}`}
-        role="img"
-      />
+      {/* Carousel — with horizontal padding so image doesn't go edge-to-edge */}
+      <div className="px-5 pb-1">
+        <div
+          className="relative bg-secondary overflow-hidden group rounded-sm w-full"
+          style={{ aspectRatio: "8 / 3" }}
+        >
+          {colors[activeColor].image ? (
+            <Image
+              src={colors[activeColor].image}
+              alt={colors[activeColor].name}
+              fill
+              className="object-cover transition-opacity duration-300"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-xs tracking-widest text-muted-foreground uppercase font-sans">
+                imagen — {colors[activeColor].name}
+              </span>
+            </div>
+          )}
 
-      {/* Metadata row */}
-      <div className="border-t border-border mt-5 px-5 py-4 grid grid-cols-[1fr_auto_auto] gap-4 items-start">
-        {/* Material */}
-        <div>
-          <p className="text-[10px] font-medium tracking-[0.15em] text-muted-foreground uppercase mb-1 font-sans">/ Tela</p>
-          <p className="text-sm font-bold text-card-foreground font-sans">{material}</p>
-        </div>
+          {/* Left arrow */}
+          <button
+            onClick={prev}
+            aria-label="Color anterior"
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+          >
+            <ChevronLeft className="w-3.5 h-3.5 text-foreground" />
+          </button>
 
-        {/* Colors */}
-        <div>
-          <p className="text-[10px] font-medium tracking-[0.15em] text-muted-foreground uppercase mb-2 font-sans">/ Colores</p>
-          <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
-            {colors.map((color, i) => (
+          {/* Right arrow */}
+          <button
+            onClick={next}
+            aria-label="Siguiente color"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+          >
+            <ChevronRight className="w-3.5 h-3.5 text-foreground" />
+          </button>
+
+          {/* Dot indicators */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+            {colors.map((_, i) => (
               <button
-                key={color.name}
+                key={i}
                 onClick={() => setActiveColor(i)}
-                className="flex items-center gap-1.5 group"
-                aria-label={`Seleccionar color ${color.name}`}
-                aria-pressed={activeColor === i}
-              >
-                <span
-                  className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full transition-all"
-                  style={{
-                    backgroundColor: activeColor === i ? color.hex : "transparent",
-                    border: activeColor === i
-                      ? "1.5px solid var(--foreground)"
-                      : "1.5px solid var(--border)",
-                    boxShadow: activeColor === i
-                      ? "0 0 0 2px rgba(168,160,144,0.3)"
-                      : "none",
-                  }}
-                />
-                <span className="text-[10px] text-muted-foreground group-hover:text-foreground transition-colors font-sans capitalize">
-                  {color.name}
-                </span>
-              </button>
+                aria-label={`Ir a color ${i + 1}`}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                  i === activeColor ? "bg-foreground scale-110" : "bg-foreground/30"
+                }`}
+              />
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Number */}
-        <div className="self-end pb-0.5">
-          <span className="text-4xl font-bold tracking-tight text-muted-foreground leading-none font-sans">{number}</span>
+      {/* Bottom row: Colores label + swatches */}
+      <div className="flex items-start gap-3 px-5 py-4 border-t border-border mt-1 flex-wrap">
+        <span className="text-[11px] font-medium text-muted-foreground font-sans tracking-wide pt-0.5 shrink-0">
+          Colores:
+        </span>
+        <div className="grid w-full gap-2 sm:grid-cols-3 lg:grid-cols-4">
+          {colors.map((color, i) => (
+            <button
+              key={color.name}
+              onClick={() => setActiveColor(i)}
+              className="flex items-center gap-1.5 group"
+              aria-label={`Seleccionar color ${color.name}`}
+              aria-pressed={activeColor === i}
+            >
+              <span
+                className="relative inline-flex w-5 h-5 rounded-sm overflow-hidden shrink-0 transition-all"
+                style={{
+                  outline: activeColor === i
+                    ? "1.5px solid var(--foreground)"
+                    : "1.5px solid var(--border)",
+                  outlineOffset: activeColor === i ? "2px" : "0px",
+                }}
+              >
+                {color.imageColor ? (
+                  <Image src={color.imageColor} alt={color.name} fill className="object-cover" />
+                ) : (
+                  <span className="w-full h-full bg-muted" />
+                )}
+              </span>
+              <span
+                className={`text-[11px] font-sans transition-colors ${
+                  activeColor === i
+                    ? "text-foreground font-semibold"
+                    : "text-muted-foreground group-hover:text-foreground"
+                }`}
+              >
+                {color.name}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
+
     </article>
   )
 }

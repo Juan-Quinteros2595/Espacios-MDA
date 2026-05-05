@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { ProductGrid } from "@/components/product-grid"
 import { Nosotros } from "@/components/nosotros"
 import { Footer } from "@/components/footer"
+import WhatsAppButton from "@/components/wsp-button"
 
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
       <ProductGrid />
       <Nosotros />
       <Footer />
+      <WhatsAppButton />
     </main>
   )
 }
