@@ -129,7 +129,13 @@ export function ProductCard({ category, colors }: ProductCardProps) {
                 }}
               >
                 {color.imageColor ? (
-                  <Image src={color.imageColor} alt={color.name} fill className="object-cover" />
+                  <Image 
+                  src={color.imageColor} 
+                  alt={color.name} 
+                  fill 
+                  className="object-cover" 
+                  sizes="20px"
+                  />
                 ) : (
                   <span className="w-full h-full bg-muted" />
                 )}
