@@ -46,18 +46,18 @@ export function ProductCard({ category, colors }: ProductCardProps) {
         </a>
       </div>
 
-      {/* Carousel — with horizontal padding so image doesn't go edge-to-edge */}
+      {/* Carousel */}
       <div className="px-5 pb-1">
         <div
           className="relative bg-secondary overflow-hidden group rounded-sm w-full"
-          style={{ aspectRatio: "8 / 3" }}
+          style={{ aspectRatio: "4 / 3" }}
         >
           {colors[activeColor].image ? (
             <Image
               src={colors[activeColor].image}
               alt={colors[activeColor].name}
               fill
-              className="object-cover transition-opacity duration-300"
+              className="object-contain transition-opacity duration-300"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -71,6 +71,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
           <button
             onClick={prev}
             aria-label="Color anterior"
+            type="button"
             className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
           >
             <ChevronLeft className="w-3.5 h-3.5 text-foreground" />
@@ -80,6 +81,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
           <button
             onClick={next}
             aria-label="Siguiente color"
+            type="button"
             className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
           >
             <ChevronRight className="w-3.5 h-3.5 text-foreground" />
@@ -92,6 +94,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
                 key={i}
                 onClick={() => setActiveColor(i)}
                 aria-label={`Ir a color ${i + 1}`}
+                type="button"
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                   i === activeColor ? "bg-foreground scale-110" : "bg-foreground/30"
                 }`}
@@ -101,12 +104,12 @@ export function ProductCard({ category, colors }: ProductCardProps) {
         </div>
       </div>
 
-      {/* Bottom row: Colores label + swatches */}
+      {/* Colores label + swatches */}
       <div className="flex items-start gap-3 px-5 py-4 border-t border-border mt-1 flex-wrap">
         <span className="text-[11px] font-medium text-muted-foreground font-sans tracking-wide pt-0.5 shrink-0">
           Colores:
         </span>
-        <div className="grid w-full gap-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid w-full gap-2 grid-cols-3 sm:grid-cols-3 lg:grid-cols-4">
           {colors.map((color, i) => (
             <button
               key={color.name}
@@ -114,6 +117,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
               className="flex items-center gap-1.5 group"
               aria-label={`Seleccionar color ${color.name}`}
               aria-pressed={activeColor === i}
+              type="button"
             >
               <span
                 className="relative inline-flex w-5 h-5 rounded-sm overflow-hidden shrink-0 transition-all"
@@ -143,7 +147,6 @@ export function ProductCard({ category, colors }: ProductCardProps) {
           ))}
         </div>
       </div>
-
     </article>
   )
 }

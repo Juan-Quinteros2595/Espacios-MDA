@@ -79,16 +79,16 @@ export function Footer() {
     <footer className="border-t border-border bg-background transition-colors duration-300" id="contacto">
       <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
 
-        {/* Logo area — switches to footer-anim card on hover */}
-        <div className="relative h-10 w-32 shrink-0 flex items-center">
+        {/* Logo area */}
+        <div className="relative h-10 w-32 shrink-0 flex items-center justify-center">
           {/* Default logo */}
           <img
             src="/mdalogo.png"
             alt="Espacios MDA"
-            className={`h-full w-auto object-contain absolute inset-0 transition-opacity duration-300 ${hovered ? "opacity-0" : "opacity-100"}`}
+            className={`h-full w-auto object-contain transition-opacity duration-300 ${hovered ? "opacity-0" : "opacity-100"}`}
           />
 
-          {/* Footer anim card (green card with typed text) */}
+          {/* Footer anim card */}
           <div
             className={`absolute inset-0 bg-[#4a6741] flex flex-col justify-center items-center p-2 transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
             style={{ boxShadow: "inset 0 0 0 1px rgba(245,240,234,0.12)" }}
@@ -116,7 +116,7 @@ export function Footer() {
 
         <p className="text-xs tracking-widest text-muted-foreground uppercase font-sans">Buenos Aires, Argentina</p>
 
-        {/* Contacto pill — hover triggers the logo swap */}
+        {/* Contacto pill */}
         <a
           href="https://wa.me/542257548387?text=Hola%20Espacios%20MDA.%20Me%20interesa%20consultar%20sobre"
           onMouseEnter={() => setHovered(true)}

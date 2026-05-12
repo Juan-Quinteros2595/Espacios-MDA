@@ -2,26 +2,52 @@ import { ProductCard } from "./product-card"
 
 const products = [
   {
-    category: "Cortina Blackout",
+    category: "Blackout Roller",
     colors: [
-      { name: "Blanco", image: "/test.jpg", imageColor: "/Colors/blackout_blanco.png" },
-      { name: "Natural", image: "/test.jpg", imageColor: "/Colors/blackout_natural.png" },
-      { name: "Beige",   image: "/test.jpg", imageColor: "/Colors/blackout_beige.png" },
-      { name: "Gris",    image: "/test.jpg", imageColor: "/Colors/blackout_gris.png" },
-      { name: "Negro",   image: "/test.jpg", imageColor: "/Colors/blackout_negro.png" },
+      { name: "Blanco", image: "/Productos/blackout/cortina-blackout.jpg", imageColor: "/Colors/blackout_blanco.png" },
+      { name: "Natural", image: "/Productos/blackout/blackout-natural.png", imageColor: "/Colors/blackout_natural.png" },
+      { name: "Beige",   image: "/Productos/blackout/blackout-beige.png", imageColor: "/Colors/blackout_beige.png" },
+      { name: "Gris",    image: "/Productos/blackout/blackout-gris.png", imageColor: "/Colors/blackout_gris.png" },
+      { name: "Negro",   image: "/Productos/blackout/blackout-negro.png", imageColor: "/Colors/blackout_negro.png" },
     ],
   },
   {
-    category: "Cortina Sunscreen",
+    category: "Sunscreen Roller",
     colors: [
-      { name: "Blanco/Blanco", image: "/test.jpg" ,imageColor: "/Colors/sunscreen_bl-bl.png" },
-      { name: "Blanco/Beige",  image: "/test.jpg" ,imageColor: "/Colors/sunscreen_bl-be.png" },
-      { name: "Blanco/Gris",   image: "/test.jpg" ,imageColor: "/Colors/sunscreen_bl-gr.png" },
-      { name: "Tabaco",        image: "/test.jpg" ,imageColor: "/Colors/sunscreen_tabaco.png" },
-      { name: "Beige/Beige",   image: "/test.jpg" ,imageColor: "/Colors/sunscreen_be-be.png" },
-      { name: "Gris/Negro",    image: "/test.jpg" ,imageColor: "/Colors/sunscreen_gr-ne.png" },
-      { name: "Gris/Gris",     image: "/test.jpg" ,imageColor: "/Colors/sunscreen_gr-gr.png" },
-      { name: "Negro/Negro",   image: "/test.jpg" ,imageColor: "/Colors/sunscreen_ne-ne.png" },
+      { name: "Blanco", image: "/Productos/sunscreen/sunscreen.jpeg" ,imageColor: "/Colors/sunscreen_bl-bl.png" },
+      { name: "Tabaco", image: "/Productos/sunscreen/sunscreen_tabaco.png" ,imageColor: "/Colors/sunscreen_tabaco.png" },
+      { name: "Beige", image: "/Productos/sunscreen/sunscreen_beige.png" ,imageColor: "/Colors/sunscreen_be-be.png" },
+      { name: "Gris/Negro", image: "/Productos/sunscreen/sunscreen_gris-negro.png" ,imageColor: "/Colors/sunscreen_gr-ne.png" },
+      { name: "Gris", image: "/Productos/sunscreen/sunscreen_gris.png" ,imageColor: "/Colors/sunscreen_gr-gr.png" },
+      { name: "Negro", image: "/Productos/sunscreen/sunscreen_negro.png" ,imageColor: "/Colors/sunscreen_ne-ne.png" },
+    ],
+  },
+  {
+    category: "Bandas",
+    colors: [
+      { name: "Gris", image: "/Productos/bandas/banda_gris.jpeg", imageColor: "/Colors/blackout_gris.png" },
+      { name: "Beige", image: "/Productos/bandas/bandas_beige.jpeg", imageColor: "/Colors/blackout_beige.png" },
+      { name: "Gris/Negro",   image: "/Productos/bandas/bandas_gris-negro.jpeg", imageColor: "/Colors/sunscreen_gr-ne.png" },
+      { name: "Tabaco",    image: "/Productos/bandas/bandas_tabaco.png", imageColor: "/Colors/color_tabaco.jpg" },
+      { name: "Negro",   image: "/Productos/bandas/bandas_negro.jpeg", imageColor: "/Colors/blackout_negro.png" },
+    ],
+  },
+  {
+    category: "Aluminio",
+    colors: [
+      { name: "Blanco", image: "/Productos/aluminio/aluminio_blanca.png", imageColor: "/Colors/blackout_blanco.png" },
+      { name: "Gris",    image: "/Productos/aluminio/aluminio_gris.png", imageColor: "/Colors/blackout_gris.png" },
+      { name: "Negro",   image: "/Productos/aluminio/aluminio_negro.png", imageColor: "/Colors/blackout_negro.png" },
+      { name: "Tiza",   image: "/Productos/aluminio/aluminio_tiza.jpeg", imageColor: "/Colors/color_tiza.png" },
+    ],
+  },
+  {
+    category: "Cortina Tela",
+    colors: [
+      { name: "Blanco", image: "/Productos/tela/tela_blanco.png", imageColor: "/Colors/blackout_blanco.png" },
+      { name: "Gris",    image: "/Productos/tela/tela_gris.png", imageColor: "/Colors/blackout_gris.png" },
+      { name: "Negra",   image: "/Productos/tela/tela_negra.jpeg", imageColor: "/Colors/blackout_negro.png" },
+      { name: "Beige",   image: "/Productos/tela/tela_beige.png", imageColor: "/Colors/blackout_beige.png" },
     ],
   },
 ]

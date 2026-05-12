@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 
 const lines = [
   { prefix: "/  ", text: "fabricación", bold: false },
@@ -100,7 +101,7 @@ export function Nosotros() {
       </div>
 
       <div ref={ref} className="flex flex-col md:flex-row items-stretch gap-6">
-        {/* Left: typed card */}
+        {/* typed card */}
         <div
           className="relative bg-[#1a1a18] flex flex-col justify-center items-center p-7 shrink-0 w-full md:w-56"
           style={{ aspectRatio: "9 / 12" }}
@@ -124,17 +125,16 @@ export function Nosotros() {
           </div>
         </div>
 
-        {/* Right: placeholder image with logo watermark */}
+        {/* Right: image */}
         <div className="relative flex-1 bg-secondary overflow-hidden min-h-48 md:min-h-0">
-          {/* subtle texture overlay */}
           <div className="absolute inset-0 bg-border/20" />
-          {/* logo watermark centered */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <img
+          <div className="absolute inset-0">
+            <Image
               src="/NosotrosMDA.png"
               alt=""
               aria-hidden="true"
-
+              fill
+              className="object-cover"
             />
           </div>
         </div>
