@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useSwipe } from "@/hooks/useSwipe"
 
 interface ColorOption {
   name: string
@@ -15,7 +16,7 @@ interface ProductCardProps {
   colors: ColorOption[]
 }
 
-const PHONE = "542257548387" // reemplazar con numero 
+const PHONE = "542257548387" 
 
 export function ProductCard({ category, colors }: ProductCardProps) {
   const [activeColor, setActiveColor] = useState(0)
@@ -23,6 +24,12 @@ export function ProductCard({ category, colors }: ProductCardProps) {
   const prev = () => setActiveColor((i) => (i === 0 ? colors.length - 1 : i - 1))
   const next = () => setActiveColor((i) => (i === colors.length - 1 ? 0 : i + 1))
 
+  const { onTouchStart, onTouchEnd } = useSwipe({
+    onSwipeLeft: next,
+    onSwipeRight: prev,
+    minSwipeDistance: 50,
+  })
+  
   const whatsappUrl = () => {
     const msg = `Hola, me interesa la ${category} de color ${colors[activeColor].name}. Está disponible todavía?`
     return `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`
@@ -51,6 +58,8 @@ export function ProductCard({ category, colors }: ProductCardProps) {
         <div
           className="relative bg-secondary overflow-hidden group rounded-sm w-full"
           style={{ aspectRatio: "4 / 3" }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
           {colors[activeColor].image ? (
             <Image
@@ -72,7 +81,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
             onClick={prev}
             aria-label="Color anterior"
             type="button"
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+            className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
           >
             <ChevronLeft className="w-3.5 h-3.5 text-foreground" />
           </button>
@@ -82,7 +91,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
             onClick={next}
             aria-label="Siguiente color"
             type="button"
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+            className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 items-center justify-center bg-background/80 border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
           >
             <ChevronRight className="w-3.5 h-3.5 text-foreground" />
           </button>

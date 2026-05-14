@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 
 const lines = [
   { prefix: "/  ", text: "fabricación", bold: false },
@@ -72,6 +73,12 @@ function TypedLine({
 export function Nosotros() {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const el = ref.current
@@ -126,18 +133,23 @@ export function Nosotros() {
         </div>
 
         {/* Right: image */}
-        <div className="relative flex-1 bg-secondary overflow-hidden min-h-48 md:min-h-0">
-          <div className="absolute inset-0 bg-border/20" />
-          <div className="absolute inset-0">
-            <Image
-              src="/NosotrosMDA.png"
-              alt=""
-              aria-hidden="true"
-              fill
-              className="object-cover"
-            />
+        {mounted ? (
+          <div className="relative flex-1 bg-secondary overflow-hidden min-h-48 md:min-h-0">
+            <div className="absolute inset-0 bg-border/20" />
+            <div className="absolute inset-0">
+              <Image
+                src={theme === "dark" ? "/showroom-black.png" : "/showroom-white.png"}
+                alt=""
+                aria-hidden="true"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="relative flex-1 bg-secondary overflow-hidden min-h-48 md:min-h-0" />
+        )}
       </div>
     </section>
   )
