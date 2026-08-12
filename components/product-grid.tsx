@@ -50,6 +50,13 @@ const products = [
       { name: "Beige",   image: "/Productos/tela/tela_beige.png", imageColor: "/Colors/blackout_beige.png" },
     ],
   },
+  {
+    category: "Cortina Inteligente",
+    colors: [
+      { name: "base", video: "/Productos/Inteligente/Cortina.mp4", imageColor: "/Colors/blackout_blanco.png" },
+      { name: "basic", video: "/Productos/Inteligente/dentro.mp4", imageColor: "/Colors/blackout_negro.png" },
+    ],
+  },
 ]
 
 export function ProductGrid() {

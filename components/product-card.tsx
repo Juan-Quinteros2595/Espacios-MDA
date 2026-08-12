@@ -7,8 +7,9 @@ import { useSwipe } from "@/hooks/useSwipe"
 
 interface ColorOption {
   name: string
-  image: string
+  image?: string
   imageColor: string
+  video?: string
 }
 
 interface ProductCardProps {
@@ -61,7 +62,18 @@ export function ProductCard({ category, colors }: ProductCardProps) {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          {colors[activeColor].image ? (
+          {/* Video-Funciona-Unga unga */}
+          {colors[activeColor].video ? (
+            <video
+              src={colors[activeColor].video}
+              className="w-full h-full object-contain"
+              autoPlay
+              loop
+              playsInline
+              muted
+              preload="metadata"
+            />
+          ) : colors[activeColor].image ? (
             <Image
               src={colors[activeColor].image}
               alt={colors[activeColor].name}
@@ -71,7 +83,7 @@ export function ProductCard({ category, colors }: ProductCardProps) {
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xs tracking-widest text-muted-foreground uppercase font-sans">
-                imagen — {colors[activeColor].name}
+                Sin contenido — {colors[activeColor].name}
               </span>
             </div>
           )}
