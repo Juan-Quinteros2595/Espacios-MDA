@@ -1,75 +1,80 @@
-import { ProductCard } from "./product-card"
+import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
-const products = [
+const curtainProducts = [
   {
-    category: "Blackout Roller",
-    colors: [
-      { name: "Blanco", image: "/Productos/blackout/cortina-blackout.jpg", imageColor: "/Colors/blackout_blanco.png" },
-      { name: "Natural", image: "/Productos/blackout/blackout-natural.png", imageColor: "/Colors/blackout_natural.png" },
-      { name: "Beige",   image: "/Productos/blackout/blackout-beige.png", imageColor: "/Colors/blackout_beige.png" },
-      { name: "Gris",    image: "/Productos/blackout/blackout-gris.png", imageColor: "/Colors/blackout_gris.png" },
-      { name: "Negro",   image: "/Productos/blackout/blackout-negro.png", imageColor: "/Colors/blackout_negro.png" },
-    ],
+    name: "Roller Blackout",
+    image: "/images/cortina-blackout-real.jpg",
+    position: "center 35%",
+    tag: "Oscurecimiento",
+    copy: "Privacidad y control de luz para dormitorios, livings, oficinas y espacios audiovisuales.",
   },
   {
-    category: "Sunscreen Roller",
-    colors: [
-      { name: "Blanco", image: "/Productos/sunscreen/sunscreen.jpeg" ,imageColor: "/Colors/sunscreen_bl-bl.png" },
-      { name: "Tabaco", image: "/Productos/sunscreen/sunscreen_tabaco.png" ,imageColor: "/Colors/sunscreen_tabaco.png" },
-      { name: "Beige", image: "/Productos/sunscreen/sunscreen_beige.png" ,imageColor: "/Colors/sunscreen_be-be.png" },
-      { name: "Gris/Negro", image: "/Productos/sunscreen/sunscreen_gris-negro.png" ,imageColor: "/Colors/sunscreen_gr-ne.png" },
-      { name: "Gris", image: "/Productos/sunscreen/sunscreen_gris.png" ,imageColor: "/Colors/sunscreen_gr-gr.png" },
-      { name: "Negro", image: "/Productos/sunscreen/sunscreen_negro.png" ,imageColor: "/Colors/sunscreen_ne-ne.png" },
-    ],
+    name: "Roller Screen",
+    image: "/images/cortina-screen-real.jpeg",
+    position: "center 38%",
+    tag: "Confort solar",
+    copy: "Filtra la luz y ayuda a reducir reflejos manteniendo la conexión con el exterior.",
   },
   {
-    category: "Bandas",
-    colors: [
-      { name: "Gris", image: "/Productos/bandas/banda_gris.jpeg", imageColor: "/Colors/blackout_gris.png" },
-      { name: "Beige", image: "/Productos/bandas/bandas_beige.jpeg", imageColor: "/Colors/blackout_beige.png" },
-      { name: "Gris/Negro",   image: "/Productos/bandas/bandas_gris-negro.jpeg", imageColor: "/Colors/sunscreen_gr-ne.png" },
-      { name: "Tabaco",    image: "/Productos/bandas/bandas_tabaco.png", imageColor: "/Colors/color_tabaco.jpg" },
-      { name: "Negro",   image: "/Productos/bandas/bandas_negro.jpeg", imageColor: "/Colors/blackout_negro.png" },
-    ],
+    name: "Bandas verticales",
+    image: "/images/cortina-bandas.jpeg",
+    position: "center",
+    tag: "Versatilidad",
+    copy: "Regulación gradual de luz y privacidad, especialmente indicada para grandes aberturas.",
   },
   {
-    category: "Aluminio",
-    colors: [
-      { name: "Blanco", image: "/Productos/aluminio/aluminio_blanca.png", imageColor: "/Colors/blackout_blanco.png" },
-      { name: "Gris",    image: "/Productos/aluminio/aluminio_gris.png", imageColor: "/Colors/blackout_gris.png" },
-      { name: "Negro",   image: "/Productos/aluminio/aluminio_negro.png", imageColor: "/Colors/blackout_negro.png" },
-      { name: "Tiza",   image: "/Productos/aluminio/aluminio_tiza.jpeg", imageColor: "/Colors/color_tiza.png" },
-    ],
+    name: "Cortinas inteligentes",
+    image: "/images/cortina-inteligente.png",
+    position: "center",
+    tag: "Automatización",
+    copy: "Controlá tus cortinas de manera simple e integral desde un sistema automatizado.",
   },
   {
-    category: "Cortina Tela",
-    colors: [
-      { name: "Blanco", image: "/Productos/tela/tela_blanco.png", imageColor: "/Colors/blackout_blanco.png" },
-      { name: "Gris",    image: "/Productos/tela/tela_gris.png", imageColor: "/Colors/blackout_gris.png" },
-      { name: "Negra",   image: "/Productos/tela/tela_negra.jpeg", imageColor: "/Colors/blackout_negro.png" },
-      { name: "Beige",   image: "/Productos/tela/tela_beige.png", imageColor: "/Colors/blackout_beige.png" },
-    ],
-  },
-  {
-    category: "Cortina Inteligente",
-    colors: [
-      { name: "base", video: "/Productos/Inteligente/Cortina.mp4", imageColor: "/Colors/blackout_blanco.png" },
-      { name: "basic", video: "/Productos/Inteligente/dentro.mp4", imageColor: "/Colors/blackout_negro.png" },
-    ],
+    name: "Cortinas de tela",
+    image: "/images/cortina-tela-real.jpg",
+    position: "center 32%",
+    tag: "Textiles",
+    copy: "Una alternativa clásica y versátil que aporta calidez, privacidad y una terminación decorativa al ambiente.",
   },
 ]
 
+function productWhatsAppLink(productName: string) {
+  const message = encodeURIComponent(`Hola Espacios MDA. Quiero consultar por ${productName}.`)
+  return `https://wa.me/542257548387?text=${message}`
+}
+
 export function ProductGrid() {
   return (
-    <section className="max-w-6xl mx-auto px-6 pb-24" id="productos">
-      <div className="flex items-baseline justify-between mb-10 border-b border-border pb-4">
-        <h2 className="text-xs font-medium tracking-[0.2em] text-muted-foreground uppercase font-sans">
-          // productos
-        </h2>
+    <section id="catalogo-cortinas" className="section-shell py-20 md:py-28">
+      <div className="catalog-heading">
+        <div>
+          <p className="eyebrow text-muted-foreground">Cortinas a medida</p>
+          <h2 id="productos">La luz también se diseña.</h2>
+        </div>
+        <p>Modelos, telas y sistemas pensados para acompañar la arquitectura y el uso real de cada ambiente.</p>
       </div>
-      <div className="flex flex-col gap-px bg-border">
-        {products.map((product) => (
-          <ProductCard key={product.category} {...product} />
+      <div className="product-grid curtain-product-grid mt-12">
+        {curtainProducts.map((product) => (
+          <article key={product.name} className="product-card">
+            <div className="product-image">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 700px) calc(100vw - 2.5rem), (max-width: 1180px) 50vw, 33vw"
+                style={{ objectPosition: product.position }}
+              />
+            </div>
+            <div className="product-body">
+              <span className="product-tag">{product.tag}</span>
+              <h3>{product.name}</h3>
+              <p>{product.copy}</p>
+              <a href={productWhatsAppLink(product.name)} target="_blank" rel="noreferrer">
+                Consultar por este producto <ArrowRight aria-hidden="true" size={15} />
+              </a>
+            </div>
+          </article>
         ))}
       </div>
     </section>

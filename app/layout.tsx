@@ -7,8 +7,36 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Espacios MDA — Cortinas & Blackout',
-  description: 'Blackout que transforma espacios. Cortinas de tela, roller y romanas de alta calidad.',
+  title: {
+    default: 'Espacios MDA | Cortinas a medida y films para vidrios',
+    template: '%s | Espacios MDA',
+  },
+  description: 'Diseñamos cortinas a medida y films para vidrios. Asesoramiento e instalación para hogares, oficinas y comercios en Argentina.',
+  applicationName: 'Espacios MDA',
+  keywords: [
+    'cortinas a medida',
+    'cortinas roller',
+    'cortinas blackout',
+    'cortinas screen',
+    'films para vidrios',
+    'Pinamar',
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'es_AR',
+    siteName: 'Espacios MDA',
+    title: 'Espacios MDA | Cortinas a medida y films para vidrios',
+    description: 'Diseñamos cortinas a medida y films para vidrios. Asesoramiento e instalación para hogares, oficinas y comercios en Argentina.',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Espacios MDA | Cortinas a medida y films para vidrios',
+    description: 'Diseñamos cortinas a medida y films para vidrios. Asesoramiento e instalación en Argentina.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       {
@@ -21,7 +49,6 @@ export const metadata: Metadata = {
       },
       {
         url: '/LogoICO.ico',
-        type: 'image/svg+xml',
       },
     ],
     apple: '/LogoICO.ico',
@@ -44,7 +71,7 @@ export default function RootLayout({
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-M8DDVKWB');
             `}
-        </Script><title></title>
+        </Script>
       </head>
       <body className="font-sans antialiased bg-background text-foreground transition-colors duration-300">
         <noscript>
