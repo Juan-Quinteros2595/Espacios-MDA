@@ -29,7 +29,7 @@ export function Hero() {
                 Explorar soluciones <ArrowDownRight aria-hidden="true" size={16} />
               </a>
               <a className="button button-ghost-light" href="https://wa.me/542257548387?text=Hola%20Espacios%20MDA.%20Quiero%20consultar%20por%20una%20soluci%C3%B3n%20para%20mi%20espacio." target="_blank" rel="noreferrer">
-                Solicitar asesoramiento
+                Solicitar asesoramiento.
               </a>
             </div>
           </div>
